@@ -130,22 +130,22 @@ nav a:hover, nav a.active {
     color: var(--text-on-dark);
 }
 .btn-danger:hover {
-    background-color: #c0392b; /* Plus foncé */
+    background-color: #c0392b;
     transform: translateY(-2px);
 }
 
 
 main {
-    flex-grow: 1; /* Permet au footer de rester en bas */
-    padding: 30px 0; /* Ajusté pour utiliser .container à l'intérieur */
+    flex-grow: 1;
+    padding: 30px 0;
 }
 
 footer {
     background-color: var(--header-footer-bg);
     color: var(--text-on-dark);
     text-align: center;
-    padding: 20px 0; /* Padding uniforme */
-    margin-top: auto; /* S'assure qu'il est en bas si le contenu est court */
+    padding: 20px 0;
+    margin-top: auto; 
 }
 
 h1, h2, h3 {
@@ -199,11 +199,11 @@ h3 { font-size: 1.4em; }
 }
 
 .form-group input[type="file"] {
-    padding: 8px; /* Ajustement spécifique pour file input */
+    padding: 8px;
 }
 
 
-    /* Ajout d'une image de fond subtile */
+    /* Ajout d'une image de fond */
 body {
     background-image: url('../images/avant.jpg');
     background-size: cover; 
