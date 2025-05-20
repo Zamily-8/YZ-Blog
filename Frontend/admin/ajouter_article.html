@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Article - YZ-Blog Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="admin.css"> <link rel="stylesheet" href="forms_admin.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="../index.html" id="logo">YZ-Blog - Admin</a>
+            <nav>
+                <ul>
+                    <li><a href="admin.html"><i class="fas fa-arrow-left"></i> Retour à la gestion</a></li>
+                    <li><a href="../index.html">Se déconnecter</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="admin-section form-admin-page">
+                <h2><i class="fas fa-plus-circle"></i> Ajouter un Nouvel Article</h2>
+                <form id="form-ajout-article">
+                    <div class="form-group">
+                        <label for="titre">Titre de l'article</label>
+                        <input type="text" id="titre" name="titre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resume">Résumé (court, pour l'aperçu)</label>
+                        <textarea id="resume" name="resume" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description complète</label>
+                        <textarea id="description" name="description" rows="10" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="source">Source (URL ou nom)</label>
+                        <input type="text" id="source" name="source">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Image de l'article (JPG, PNG)</label>
+                        <input type="file" id="image" name="image" accept="image/jpeg, image/png">
+                        <img id="preview-image" src="#" alt="Aperçu de l'image" style="max-width: 200px; margin-top: 10px; display: none;"/>
+                    </div>
+                     <button type="submit" class="btn btn-primary btn-submit-article">
+                        <i class="fas fa-save"></i> Enregistrer l'Article
+                    </button>
+                    <a href="admin.html" class="btn btn-secondary">Annuler</a>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> YZ-Blog Admin - Tous droits réservés</p>
+    </footer>
+    <script src="ajouter_article.js"></script>
+</body>
+</html>

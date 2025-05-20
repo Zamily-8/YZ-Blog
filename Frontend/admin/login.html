@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion Admin - YZ-Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* [cite: 90] */
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 0; /* Annuler le padding du header fixe ici */
+            background-color: var(--body-bg); /* [cite: 91] */
+        }
+        .login-container {
+            background-color: var(--light-bg);
+            padding: 40px; /* [cite: 92] */
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px var(--shadow-color);
+            width: 100%;
+            max-width: 400px;
+            text-align: center; /* [cite: 93] */
+        }
+        .login-container h1 {
+            color: var(--primary-color);
+            margin-bottom: 25px; /* [cite: 94] */
+        }
+        .login-container .form-group {
+            text-align: left; /* Aligner les labels à gauche */ /* [cite: 95] */
+        }
+        .login-container .btn {
+            width: 100%;
+            padding: 12px; /* [cite: 96] */
+            font-size: 1.1em;
+            margin-top: 10px;
+            position: relative; /* Pour le positionnement du spinner/message */
+        }
+        .error-message, .success-message { /* Styles pour les messages d'erreur et de succès */
+            padding: 10px;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            display: none; /* Caché par défaut */
+        }
+        .error-message {
+            color: var(--danger-color); /* [cite: 97] */
+            background-color: rgba(231, 76, 60, 0.1);
+            border: 1px solid var(--danger-color); /* [cite: 98] */
+        }
+        .success-message { /* Style pour message de succès */
+            color: var(--success-color);
+            background-color: rgba(46, 204, 113, 0.1);
+            border: 1px solid var(--success-color);
+        }
+
+        /* Style pour la notification centrale (MODIFICATION [cite: 6]) */
+        .notification-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; /* Au-dessus de tout */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .notification-box {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .notification-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .notification-overlay.show .notification-box {
+            transform: scale(1);
+        }
+        .notification-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        .icon-success { color: var(--success-color); }
+        .icon-error { color: var(--danger-color); }
+
+        /* Style pour le spinner de chargement (MODIFICATION [cite: 6]) */
+        .btn .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            width: 18px;
+            height: 18px;
+            animation: spin 1s ease-in-out infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px; /* Ou centrer si seul */
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Connexion Administrateur</h1>
+        <div id="login-error-inline" class="error-message"></div> <form id="login-form">
+            <div class="form-group">
+                <label for="login-email">Email :</label> <input type="email" id="login-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Mot de passe :</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary" id="loginButton">
+                <span class="button-text">Se connecter</span>
+            </button>
+        </form>
+        <p style="margin-top:20px; font-size:0.9em;"><a href="../index.html">Retour au site</a></p>
+    </div>
+
+    <div id="notificationOverlay" class="notification-overlay">
+        <div class="notification-box">
+            <div id="notificationIcon" class="notification-icon"></div>
+            <p id="notificationMessage"></p>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher la notification centrale (MODIFICATION [cite: 6])
+        function showNotification(message, isSuccess) {
+            const overlay = document.getElementById('notificationOverlay');
+            const iconDiv = document.getElementById('notificationIcon');
+            const messageP = document.getElementById('notificationMessage');
+
+            messageP.textContent = message;
+            if (isSuccess) {
+                iconDiv.innerHTML = '&#10004;'; // Symbole "effectué" (coche)
+                iconDiv.className = 'notification-icon icon-success';
+            } else {
+                iconDiv.innerHTML = '&#10006;'; // Symbole "croix"
+                iconDiv.className = 'notification-icon icon-error';
+            }
+            overlay.classList.add('show');
+            
+            if (!isSuccess) { // Cacher la notification d'échec après quelques secondes
+                setTimeout(() => {
+                    overlay.classList.remove('show');
+                }, 3000);
+            } else { // Pour succès, on va rediriger, donc pas besoin de cacher manuellement
+                 setTimeout(() => {
+                    overlay.classList.remove('show'); // Cacher au cas où la redirection prend du temps
+                }, 1400); // Un peu avant la redirection
+            }
+        }
+
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const errorDivInline = document.getElementById('login-error-inline');
+            const loginButton = document.getElementById('loginButton');
+            const buttonText = loginButton.querySelector('.button-text');
+            const originalButtonText = buttonText.textContent;
+
+            // Afficher le spinner et désactiver le bouton
+            buttonText.textContent = 'Connexion...';
+            let spinner = loginButton.querySelector('.spinner');
+            if (!spinner) {
+                spinner = document.createElement('span');
+                spinner.className = 'spinner';
+                loginButton.appendChild(spinner);
+            }
+            loginButton.disabled = true;
+            errorDivInline.style.display = 'none'; // Cacher l'erreur inline précédente
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    showNotification("Connexion réussie !", true);
+                    setTimeout(() => {
+                        window.location.href = 'admin.html';
+                    }, 1500); // Délai pour voir la notification
+                } else {
+                    showNotification(result.error || "Nom d'utilisateur ou mot de passe incorrect.", false);
+                    loginButton.disabled = false;
+                    buttonText.textContent = originalButtonText;
+                    if (spinner) loginButton.removeChild(spinner);
+                    // Optionnel: afficher aussi l'erreur inline
+                    // errorDivInline.textContent = result.error || "Identifiants incorrects.";
+                    // errorDivInline.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Erreur de connexion:', error);
+                showNotification("Une erreur de communication avec le serveur s'est produite.", false);
+                loginButton.disabled = false;
+                buttonText.textContent = originalButtonText;
+                if (spinner && loginButton.contains(spinner)) loginButton.removeChild(spinner);
+            }
+        });
+
+        // Vérification si l'utilisateur est déjà connecté (optionnel, basé sur un indicateur simple)
+        // Pour une vraie sécurité, le backend devrait protéger admin.html
+        // if (sessionStorage.getItem('isAdminLoggedIn') === 'true') { // Cette logique est obsolète avec le cookie HttpOnly
+        //     // window.location.href = 'admin.html'; // Rediriger si déjà "loggué" (côté client)
+        // }
+    </script>
+</body>
+</html>

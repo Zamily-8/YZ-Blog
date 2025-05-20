@@ -1,0 +1,52 @@
+/* admin/forms_admin.css */
+
+.form-admin-page h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.form-admin-page h2 i {
+    font-size: 0.9em; /* Ajuster la taille de l'icône dans le titre */
+}
+
+.form-admin-page .form-group label {
+    font-weight: 700; /* Labels plus visibles */
+    color: var(--text-on-light);
+}
+
+.form-admin-page input[type="file"] {
+    border: 1px dashed var(--border-color); /* Style un peu différent pour l'upload */
+    padding: 15px;
+    background-color: #fdfdfd;
+}
+.form-admin-page input[type="file"]:hover {
+    border-color: var(--primary-color);
+}
+
+
+#preview-image {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-admin-page .btn-submit-article,
+.form-admin-page .btn-secondary {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 1.05em;
+}
+
+.form-admin-page .btn-secondary {
+    background-color: #6c757d; /* Gris standard pour "Annuler" */
+    color: white;
+}
+.form-admin-page .btn-secondary:hover {
+    background-color: #5a6268;
+}

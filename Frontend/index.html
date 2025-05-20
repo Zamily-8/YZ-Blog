@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YZ-Blog - Accueil</title>
+    <link rel="stylesheet" href="css/style.css"> <link rel="stylesheet" href="css/index-specific.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" id="logo">YZ-Blog</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin/login.html">Admin</a></li> </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero-section">
+                <h1>Bonjour et Bienvenue sur YZ-Blog</h1>
+                <p>Content(e) de vous voir ici.<br>
+                    Installez-vous, explorez, et bonne lecture.</p>
+                </section>
+
+            <section class="search-section">
+                <div class="form-group">
+                    <input type="text" id="searchInput" placeholder="Rechercher un article par titre...">
+                    <button id="searchButton" class="btn btn-primary"><i class="fas fa-search"></i> Rechercher</button>
+                </div>
+            </section>
+
+            <section class="liste-articles">
+                <p class="no-articles" style="display: none;">Aucun article ne correspond à votre recherche ou aucun article n'a été publié.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> YZ-Blog - Tous droits réservés</p>
+    </footer>
+
+    <script src="js/index.js"></script> </body>
+</html>

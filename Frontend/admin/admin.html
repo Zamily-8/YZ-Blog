@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Admin - YZ-Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="../index.html" id="logo">YZ-Blog - Admin</a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Se déconnecter</a></li> </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="admin-header">
+                <h2>Gestion des Articles</h2> <a href="ajouter_article.html" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Ajouter un Article
+                </a>
+            </div>
+
+            <section class="admin-section">
+                <h3>Liste des Articles</h3> <div class="table-responsive">
+                    <table id="tableau-articles">
+                        <thead>
+                            <tr>
+                                <th>Titre</th> <th>Résumé (Extrait)</th>
+                                <th>Source</th>
+                                <th>Actions</th> </tr>
+                        </thead>
+                        <tbody>
+                           </tbody>
+                    </table>
+                </div>
+                <p id="no-articles-admin" style="display: none; text-align:center; padding: 20px;">Aucun article à gérer pour le moment.</p> </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> YZ-Blog Admin - Tous droits réservés</p>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>

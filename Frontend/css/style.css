@@ -1,0 +1,212 @@
+/* css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: rgb(0, 87, 250);
+    --secondary-color: rgb(48, 92, 173);
+    --header-footer-bg: #454545;
+    --text-on-dark: white;
+    --text-on-light: #333;
+    --body-bg: #f0f4f8; /* Bleu très clair et doux */
+    --light-bg: white;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --danger-color: #e74c3c;
+    --success-color: #2ecc71;
+
+    --font-primary: 'Roboto', 'Open Sans', Arial, sans-serif;
+    --base-font-size: 16px;
+    --container-width: 1200px;
+    --border-radius: 8px; /* Rayon de bordure modernisé */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--base-font-size);
+    line-height: 1.6;
+    background-color: var(--body-bg);
+    color: var(--text-on-light);
+    padding-top: 80px; /* Hauteur du header fixe */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: var(--header-footer-bg);
+    color: var(--text-on-dark);
+    padding: 15px 0; /* Ajusté pour centrer le contenu avec .container */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+#logo {
+    font-size: 1.8em; /* Ajusté */
+    font-weight: 700;
+    color: var(--text-on-dark);
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Espacement modernisé */
+}
+
+nav a {
+    color: var(--text-on-dark);
+    text-decoration: none;
+    padding: 8px 15px; /* Padding uniforme */
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--primary-color);
+    color: var(--text-on-dark);
+}
+
+/* Style pour les boutons d'action (pas les liens de nav) */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-on-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-on-dark);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: var(--text-on-dark);
+}
+.btn-danger:hover {
+    background-color: #c0392b; /* Plus foncé */
+    transform: translateY(-2px);
+}
+
+
+main {
+    flex-grow: 1; /* Permet au footer de rester en bas */
+    padding: 30px 0; /* Ajusté pour utiliser .container à l'intérieur */
+}
+
+footer {
+    background-color: var(--header-footer-bg);
+    color: var(--text-on-dark);
+    text-align: center;
+    padding: 20px 0; /* Padding uniforme */
+    margin-top: auto; /* S'assure qu'il est en bas si le contenu est court */
+}
+
+h1, h2, h3 {
+    color: var(--text-on-light);
+    margin-bottom: 0.8em;
+    font-weight: 700;
+}
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.4em; }
+
+
+/* Formulaires modernisés */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: var(--base-font-size);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 87, 250, 0.2);
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group input[type="file"] {
+    padding: 8px; /* Ajustement spécifique pour file input */
+}
+
+
+    /* Ajout d'une image de fond subtile */
+body {
+    background-image: url('../images/avant.jpg');
+    background-size: cover; 
+    background-position: center center;
+    background-attachment: fixed;
+}

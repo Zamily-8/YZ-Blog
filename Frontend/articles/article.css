@@ -1,0 +1,169 @@
+/* articles/article.css */
+
+.article-complet {
+    background-color: var(--light-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px var(--shadow-color); /* [cite: 147] */
+    margin-bottom: 40px;
+}
+
+.article-header {
+    margin-bottom: 25px; /* [cite: 148] */
+}
+
+.article-header h1 {
+    color: var(--primary-color);
+    font-size: 2.5em; /* Titre plus grand pour l'article */ /* [cite: 149] */
+    margin-bottom: 10px;
+}
+
+.article-meta {
+    font-size: 0.9em;
+    color: #777; /* [cite: 150] */
+    margin-bottom: 20px;
+}
+.article-meta span {
+    margin-right: 15px;
+}
+.article-meta i {
+    margin-right: 5px; /* [cite: 151] */
+}
+
+
+.article-image-container {
+    width: 100%;
+    overflow: visible; /* on enlève la coupure */
+    max-height: none;   /* pas de hauteur limite */
+    margin-bottom: 30px;
+}
+
+.article-image-container img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain; /* affiche toute l'image sans la rogner */
+    display: block;
+    margin: 0 auto;
+}
+
+
+.article-content {
+    font-size: 1.4em; /* Taille de police confortable pour la lecture */ /* [cite: 161] */
+    line-height: 1.7;
+    color: #444; /* [cite: 162] */
+}
+
+.article-content p {
+    margin-bottom: 1.2em;
+}
+
+.article-content h2, .article-content h3, .article-content h4 {
+    color: var(--secondary-color);
+    margin-top: 1.5em; /* [cite: 163] */
+    margin-bottom: 0.7em;
+}
+
+.article-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    margin: 1.5em 0;
+    padding: 0.5em 1em;
+    background-color: #f9f9f9; /* [cite: 164] */
+    font-style: italic;
+}
+
+.article-content ul, .article-content ol {
+    margin-bottom: 1em;
+    padding-left: 1.5em; /* [cite: 165] */
+}
+
+.article-source {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    font-size: 1 em;
+    color: #777; /* [cite: 166] */
+}
+
+.article-source a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.article-source a:hover {
+    text-decoration: underline; /* [cite: 167] */
+}
+
+/* Section Commentaires */
+.comment-section {
+    background-color: var(--light-bg);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px var(--shadow-color); /* [cite: 168] */
+}
+
+.comment-section h3, .comments-list h4 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* [cite: 169] */
+}
+
+#comment-form .form-group {
+    margin-bottom: 15px;
+}
+
+#comment-form button[type="submit"] {
+    margin-top: 10px; /* [cite: 170] */
+}
+
+.comments-list {
+    margin-top: 30px;
+}
+
+.comment-item {
+    border-bottom: 1px dashed var(--border-color);
+    padding: 15px 0; /* [cite: 171] */
+}
+.comment-item:last-child {
+    border-bottom: none;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 5px; /* [cite: 172] */
+}
+.comment-author .comment-date {
+    font-weight: normal;
+    font-size: 0.85em;
+    color: #888;
+    margin-left: 10px; /* [cite: 173] */
+}
+
+.comment-body {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+}
+
+.no-comments {
+    font-style: italic;
+    color: #888; /* [cite: 174] */
+}
+
+@media (max-width: 768px) {
+    .article-header h1 {
+        font-size: 2em; /* [cite: 175] */
+    }
+    .article-content {
+        font-size: 1em; /* [cite: 176] */
+    }
+    .article-complet {
+        padding: 20px; /* [cite: 177] */
+    }
+    /* Ajustement pour que l'image ne soit pas trop haute sur mobile */
+    .article-image-container {
+        max-height: 300px;
+    }
+}

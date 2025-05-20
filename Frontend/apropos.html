@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - YZ-Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" id="logo">YZ-Blog</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html" class="active">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin/login.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="page-content">
+                <h1>À Propos de YZ-Blog</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus nesciunt exercitationem voluptatibus ipsum vitae est, incidunt optio dolor saepe aspernatur culpa quibusdam eius asperiores id suscipit
+                     magni iste nobis porro error explicabo ea, dignissimos esse minima tempore. Dicta doloribus 
+                     vero aut saepe itaque assumenda quos dolorem, accusamus, omnis voluptas repellendus nesciunt 
+                     dolores ad rem excepturi? Doloribus, culpa odit consectetur labore expedita explicabo voluptatibus officia iusto beatae magnam, voluptas, ipsam deserunt ullam minus quasi? Ut exercitationem dignissimos explicabo alias molestiae natus delectus consequuntur similique officiis eum voluptates quae quos earum, beatae nemo tenetur fugit porro quis reiciendis quibusdam aspernatur amet repellendus.</p>
+                </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYearDynamic"></span> YZ-Blog - Tous droits réservés</p>
+    </footer>
+    <script>
+        document.getElementById('currentYearDynamic').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
